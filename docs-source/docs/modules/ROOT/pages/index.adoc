@@ -4,35 +4,94 @@
 :toclevels: 2
 :description: Quickly develop distributed streaming applications to deploy on Kubernetes
 include::partial$include.adoc[]
+:imagesdir: assets/images
 
-Cloudflow enables you to quickly develop distributed streaming applications to deploy on Kubernetes. Using Cloudflow, you can easily break down your streaming application into small composable components and wire them together with schema-based contracts. Cloudflow integrates with popular streaming engines like Akka, Spark and Flink. It also comes with a powerful CLI tool to easily manage, scale and configure your streaming applications at runtime. With its powerful abstractions, Cloudflow enables you to define, build and deploy the most complex streaming applications.
+The rapid advance and adoption of the Kubernetes ecosystem is finally delivering on the devops promise of complete responsibility of teams over the lifecycle of their applications.
+But it is also increasing the complexity burden on developers that need to understand and manage many more concepts and moving parts to deliver an end-to-end application.
+Cloudflow aims at alleviating that pain for distributed streaming applications, which are known to be fairly more complex than the average front-end or microservice deployment.
 
-The open source Cloudflow application development toolkit includes:
+Cloudflow enables you to quickly develop distributed streaming applications to deploy on Kubernetes. 
+Using Cloudflow, you can easily break down your streaming application into small composable components and wire them together with schema-based contracts. 
+
+Cloudflow integrates with popular streaming engines like Akka, Apache Spark, and Apache Flink. 
+It also comes with a powerful CLI tool to easily manage, scale and configure your deployed streaming applications. 
+With its powerful abstractions, Cloudflow enables you to define, build and deploy the most complex streaming applications.
+
+To streamline the end-2-end application lifecycle, Cloudflow offers two sets of components: An API and CLI for local development and a cluster installation that extends your Kubernetes cluster with cloud-native streaming data capabilities.  
+
+On the local development environment, the open-source Cloudflow application development toolkit includes:
 
 - An API definition for `Streamlet`, the core abstraction in Cloudflow.
 - An extensible set of runtime implementations for `Streamlet`(s). Cloudflow provides support for popular streaming runtimes, like Spark's Structured Streaming, Flink, and Akka.
 - A `Streamlet` composition model driven by a `blueprint` definition. 
 - A sandbox execution mode that accelerates the development and testing of your applications.
 - A set of `sbt` plugins for packaging Cloudflow applications into a deployable container.
-- The Cloudflow operator, a Kubernetes operator that manages the application lifecycle on Kubernetes.
 - A CLI, in the form of a `kubectl` plugin, that facilitates manual and scripted management of the application.  
+
+On the Kubernetes cluster, the following operators are installed and managed by Cloudflow:
+- The Spark operator: to deploy and manage Spark applications
+- The Flink operator: to deploy and manage Flink applications
+- The Strimzi operator: to control the lifecycle of managed Kafka topics. Optionally, it can deploy and manage a Kafka cluster.
+Relying on these supporting components, the Cloudflow operator takes care of orchestrating the deployment of the different parts of a streaming pipeline as an end-2-end application.
 
 Cloudflow can dramatically accelerate your application development efforts, reducing the time required to create, package, and deploy an application from weeks to hours. Lightbend also offers support and enhanced deployment and operational features with a Lightbend Subscription. 
 
-ifdef::todo[TODO: add x-refs to subscription info and to the commercial doc here.]
+ifdef::todo[TODO: add x-refs to subscription info and to the enterprise doc here.]
 
-== Basic concepts
+== Streaming Data Applications with Cloudflow 
 
-// TODO Add an illustration here
+Stream processing is the discipline and related set of techniques used to extract information from unbounded data.
+Streaming applications apply such techniques to create applications and systems able to extract actionable insights from data as data arrives into our processing system.
 
-As discussed above, Cloudflow allows you to quickly build and deploy distributed stream processing applications by breaking them into smaller stream processing units called `Streamlets`. Each `Streamlet` represents an independent stream processing component that implements a self-contained stage of the application logic. `Streamlets` let you break down your application into logical pieces that communicate with each other in a streaming fashion to accomplish an end to end goal. `Streamlets` can be composed into larger systems using _blueprints_, which specify how `Streamlets` can be connected together to form a topology.
+The growing popularity of this technology is driven by the increasing availability of data from many sources and the need of enterprises to speed up their reaction time to that data.
 
-The `Streamlet` logic can be written using an extensible choice of streaming runtimes, such as Akka Streams and Spark. The lightweight API exposes the raw power of the underlying runtime and its libraries while providing a higher-level abstraction for composing `streamlets` and expressing data schemas. Your code is written in your familiar Structured Streaming, Flink, or Akka Streams native API. 
+We characterize streaming applications as a connected graph of stream-processing components, where each component specializes on a particular task, using the _'right tool for the job'_ premise.
 
-`Streamlets` expose one or more inlets and outlets that represent the data consumed and produced by the `Streamlet`, respectively. Inlets and outlets are schema-driven, ensuring that data flows are always consistent and that connections between `streamlets` are compatible. The data sent between `Streamlets` is safely persisted in the underlying pub-sub system, allowing for independent lifecycle management of the different components.
+[#abstract-streaming-app]
+.An Abstract Streaming Application
+[caption="Fig. 1 - "]
+image::abstract-streaming-app.png[]
 
-Applications are deployed as a whole. Cloudflow takes care of deploying the individual `streamlets` and making sure connections get translated into data flowing between them at runtime. `Streamlets` can be scaled up and down to meet the load requirements of the application. 
-The underlying data streams are partitioned to allow for parallelism in a distributed application execution.
+In <<abstract-streaming-app>>, we illustrate, in a generic way, an application that processes data events.
+
+At the left, we recognize an initial stage where we want to capture or accept data. 
+It could be an HTTP endpoint to accept data from remote clients, a connection to a Kafka topic, or to an internal system in an enterprise.
+The following component represents a processing phase that applies some logic to the data, like business rules, statistical data analysis, or a machine learning model that implements the business aspect of the application.
+This component may add additional information to the event and send it as valid data to an external system or flag the data as invalid and report it.
+Each of these stages present different application requirements, scalability concerns, and usually, also different deployment strategies on Kubernetes.
+
+Cloudflow offers a novel solution to approach the creation, deployment, and management of streaming applications on Kubernetes by offering a set of tools that facilitate the application development and a set of Kubernetes extensions that makes streaming applications native to Kubernetes.  
+
+Lets break down the typical develop-test-deploy application lifecycle and see how Cloudflow facilitates each stage to accelerate the complete process.
+
+=== Develop with Streamlets: Focus on the Code that Matters
+
+When creating streaming applications, a large portion of the development effort goes into the _mechanics_ of streaming: setting up connections to the messaging system, de/ser/ializing messages, setting up fault-recovery storage, etc, to finally add our business logic to it.
+
+[#biz-logic]
+.Business Logic in a Streaming Application
+[caption="Fig 2. - "]
+image::business-logic.png[]
+
+Cloudflow introduces a new component model and its corresponding API.
+We call it *Streamlets*.
+
+The Streamlet API provides a definition of how each individual component  
+
+=== Local Testing: Sandbox Execution of a Complete Application
+
+=== Packaging: Build-generated Artifacts
+
+=== Deployment: `kubectl` Extensions for a YAML-less experience 
+
+
+Locally, on the development environment, Cloudflow provides you with 
+At development time:: The Streamlet API lets you focus on the business logic using the backend API of your choice: Apache Spark Structured Streaming, Apache Flink, or Akka Streams.
+At local and integration testing time:: The _Sandbox_ lets you start the complete application
+
+== Accelerate Develop-to-Deploy Cycles
+
+
 
 == What's next
 
