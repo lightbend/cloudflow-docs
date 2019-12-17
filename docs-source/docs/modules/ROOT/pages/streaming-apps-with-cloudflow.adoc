@@ -144,11 +144,35 @@ The `Sandbox` gives you a blazing fast feedback loop for the functionality you a
 
 === Packaging: Build-generated Artifacts
 
+Once we are confident that the application functions as we expect, we can build a package.
+Cloudflow applications are packaged as a single docker image that contains the necessary dependencies to run the different `Streamlets` on their respective backends.
+That image gets published to a docker repository of your choice.
+
 === Deployment: `kubectl` Extensions for a YAML-less experience 
 
+At this stage, we are ready to deploy our application to a Cloudflow-enabled Kubernetes cluster.
+In contrast with the usual YAML-full experience that typical K8s deployments require, with Cloudflow we use the `blueprint` information and the `Streamlet` definitions to auto-generate an application deployment. 
 
-Locally, on the development environment, Cloudflow provides you with 
-At development time:: The Streamlet API lets you focus on the business logic using the backend API of your choice: Apache Spark Structured Streaming, Apache Flink, or Akka Streams.
-At local and integration testing time:: The _Sandbox_ lets you start the complete application
+Cloudflow also comes with a `kubectl` plugin that augments the capabilities of your local `kubectl` installation to work with Cloudflow applications. 
+You use your usual `kubectl` commands to auth against your target cluster and then, with the `kubectl cloudflow` plugin we can deploy and manage a Cloudflow application as a single logica unit.
 
-== Accelerate Develop-to-Deploy Cycles
+[source, bash]
+----
+$ kubectl cloudflow deploy image:version 
+----
+
+This method is not only dev-friendly, but also compatible with the typical CI/CD deployments to allow you to take the application from dev to production in a controlled way.
+
+
+= Conclusion
+
+As a developer, Cloudflow gives you a set of powerful tools to accelerate the application development process:
+- The Streamlet API, lets you focus on business value and use your knowledge of widely popular streaming runtimes, like Akka Streams, Apache Spark Structured Streaming, and Apache Flink to create full-fledged streaming applications.
+- The blueprint lets you easily compose your application with the peace of mind that a verification phase, informed by schema definitions,  provides.
+- The _Sandbox_ lets you exercise the complete application in seconds, giving you a real-time feedback loop to speed up the debugging and validation phases.
+
+And with a fully developed application, the `kubectl cloudflow` plugin gives you the ability to deploy and control the lifecycle of your application on an enabled K8s cluster.
+
+Cloudflow takes away the pain of creating and deploying distributed applications on Kubernetes, speeds up your development process, and gives you full control over the operational deployment.
+
+In an nutshell, it gives you distributed application development super-powers on Kubernetes.
