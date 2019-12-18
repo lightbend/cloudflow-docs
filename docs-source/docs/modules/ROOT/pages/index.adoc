@@ -28,13 +28,9 @@ On the local development environment, the open-source Cloudflow application deve
 - A set of `sbt` plugins for packaging Cloudflow applications into a deployable container.
 - A CLI, in the form of a `kubectl` plugin, that facilitates manual and scripted management of the application.  
 
-On the Kubernetes cluster, the following operators are installed and managed by Cloudflow:
-- The Spark operator: to deploy and manage Spark applications
-- The Flink operator: to deploy and manage Flink applications
-- The Strimzi operator: to control the lifecycle of managed Kafka topics. Optionally, it can deploy and manage a Kafka cluster.
-Relying on these supporting components, the Cloudflow operator takes care of orchestrating the deployment of the different parts of a streaming pipeline as an end-2-end application.
+On the Kubernetes cluster, the Cloudflow operator takes care of orchestrating the deployment of the different parts of a streaming pipeline as an end-to-end application.
 
-Cloudflow can dramatically accelerate your application development efforts, reducing the time required to create, package, and deploy an application from weeks to hours. Lightbend also offers support and enhanced deployment and operational features with a Lightbend Subscription. 
+Cloudflow dramatically accelerates your application development efforts, reducing the time required to create, package, and deploy an application from weeks to hours. Lightbend also offers support and enhanced deployment and operational features with a Lightbend Subscription. 
 
 ifdef::todo[TODO: add x-refs to subscription info and to the enterprise doc here.]
 
