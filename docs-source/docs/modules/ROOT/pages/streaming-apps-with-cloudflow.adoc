@@ -25,7 +25,7 @@ Each of these stages present different application requirements, scalability con
 == The Cloudflow Approach to Creating Streaming Applications 
 
 Cloudflow offers a novel solution to approach the creation, deployment, and management of streaming applications on Kubernetes.
-For the developer, it offering developers a toolbox that facilitate the application creation.
+For the developer, it offering developers a toolbox that facilitates the application creation.
 On the Kubernetes side, it comes with a set of extensions that makes Cloudflow streaming applications native to Kubernetes.  
 
 Lets break down the typical _develop-test-package-deploy_ lifecycle of an application and see how Cloudflow facilitates each stage, and as a result, accelerates the end-to-end process.

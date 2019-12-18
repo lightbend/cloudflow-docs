@@ -6,9 +6,9 @@
 include::partial$include.adoc[]
 :imagesdir: assets/images
 
-The rapid advance and adoption of the Kubernetes ecosystem is finally delivering on the devops promise of complete responsibility of teams over the lifecycle of their applications.
-But it is also increasing the complexity burden on developers that need to understand and manage many more concepts and moving parts to deliver an end-to-end application.
-Cloudflow aims at alleviating that pain for distributed streaming applications, which are known to be fairly more complex than the average front-end or microservice deployment.
+The rapid advance and adoption of the Kubernetes ecosystem is finally delivering on the devops promise of giving control and responsibility to dev teams over the lifecycle of their applications.
+Kubernetes also increases the complexity that developers need to manage to deliver an end-to-end application.
+Cloudflow alleviates that pain for distributed streaming applications, which are known to be fairly more complex than the average front-end or microservice deployment.
 
 Cloudflow enables you to quickly develop distributed streaming applications to deploy on Kubernetes. 
 Using Cloudflow, you can easily break down your streaming application into small composable components and wire them together with schema-based contracts. 
@@ -17,14 +17,14 @@ Cloudflow integrates with popular streaming engines like Akka, Apache Spark, and
 It also comes with a powerful CLI tool to easily manage, scale and configure your deployed streaming applications. 
 With its powerful abstractions, Cloudflow enables you to define, build and deploy the most complex streaming applications.
 
-To streamline the end-2-end application lifecycle, Cloudflow offers two sets of components: An API and CLI for local development and a cluster installation that extends your Kubernetes cluster with cloud-native streaming data capabilities.  
+To streamline the end-to-end application lifecycle, Cloudflow offers two sets of components: An API and CLI for local development and a cluster installation that extends your Kubernetes cluster with cloud-native streaming data capabilities.  
 
 On the local development environment, the open-source Cloudflow application development toolkit includes:
 
 - An API definition for `Streamlet`, the core abstraction in Cloudflow.
 - An extensible set of runtime implementations for `Streamlet`(s). Cloudflow provides support for popular streaming runtimes, like Spark's Structured Streaming, Flink, and Akka.
 - A `Streamlet` composition model driven by a `blueprint` definition. 
-- A sandbox execution mode that accelerates the development and testing of your applications.
+- A _Sandbox_ execution mode that accelerates the development and testing of your applications.
 - A set of `sbt` plugins for packaging Cloudflow applications into a deployable container.
 - A CLI, in the form of a `kubectl` plugin, that facilitates manual and scripted management of the application.  
 
