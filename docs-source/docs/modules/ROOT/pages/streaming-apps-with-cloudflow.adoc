@@ -12,15 +12,15 @@ We characterize streaming applications as a connected graph of stream-processing
 [caption="Fig. 1 - "]
 image::abstract-streaming-app.png[]
 
-In <<abstract-streaming-app>>, we illustrate in a generic way an application that processes data events.
+In <<abstract-streaming-app>>, we illustrate -- generically -- an application that processes data events.
 
 At the left, we recognize an initial stage where we want to capture or accept data. 
 It could be an HTTP endpoint to accept data from remote clients, a connection to a Kafka topic, or to an internal system in an enterprise.
 The following component represents a processing phase that applies some logic to the data, like business rules, statistical data analysis, or a machine learning model that implements the business aspect of the application.
 This component may add additional information to the event and send it as valid data to an external system or flag the data as invalid and report it.
-We show these two different data paths outputs with the green and red stages to the right.
+We show these two different data output paths with the green and red stages to the right.
 
-Each of these stages present different application requirements, scalability concerns, and usually, also different deployment strategies on Kubernetes.
+Each of these stages presents different application requirements, scalability concerns, and usually, also different deployment strategies on Kubernetes.
 
 == The Cloudflow Approach to Creating Streaming Applications 
 
@@ -28,7 +28,7 @@ Cloudflow offers a novel solution to approach the creation, deployment, and mana
 For the developer, it offers developers a toolbox that facilitates the application creation.
 On the deployment side, it comes with a set of extensions that makes Cloudflow streaming applications native to Kubernetes.  
 
-Lets break down the typical _develop-test-package-deploy_ lifecycle of an application and see how Cloudflow helps you at each stage to accelerate the end-to-end process.
+Let us break down the typical _develop-test-package-deploy_ lifecycle of an application and see how Cloudflow helps you at each stage to accelerate the end-to-end process.
 
 === Develop with Streamlets: Focus on the Code that Matters
 
@@ -40,12 +40,21 @@ When creating streaming applications, a large portion of the development effort 
 image::business-logic.png[]
 
 Cloudflow introduces a new component model, called _Streamlets_. 
-The Streamlet model offers an abstraction to represent the connections of a component, the schema of the data for each connection, and the business logic of the component.
+The Streamlet model offers an abstraction to:
+- Identify the connections of a component as inlets and outlets
+- Attach the schema of the data for each connection, and
+- Provide an entry point for the business logic of the component.
+
 Cloudflow offers `Streamlet` backend implementations in Akka Streams, Apache Spark Structured Streaming, and Apache Flink.
 
-With each Streamlet backend implementation, the users are able to write their busines logic in the native API of the backend, using either Java or Scala. (Spark is currently Scala-only)
+For each supported Streamlet implementation, the users can write their business logic in the native API of the backend, using either Java or Scala. 
 
-Let's illustrate this with an example:
+[NOTE]
+====
+Apache Spark Structured Streaming is currently offered only in Scala.
+====
+
+Let us illustrate this important point with an example:
 
 .Spark Streamlet Example
 [source, scala]
@@ -80,9 +89,9 @@ Additionally, Cloudflow can be extended with new streaming backends.
 
 === Composition and Testing: Sandbox Execution of a Complete Application
 
-Once we have developed the different components of our application we compose the end-to-end flow by creating a _blueprint_.
-The _blueprint_ declares the `Streamlets` instances that belong to an application and how each `Streamlet` instance connects to the others.
-This is a simple _blueprint_ definition:
+Once we have developed the different components of our application, we compose the end-to-end flow by creating a _blueprint_.
+The _blueprint_ declares the `Streamlet` instances that belong to an application and how each `Streamlet` instance connects to the others.
+The following example shows a simple _blueprint_ definition:
 
 .`blueprint` example
 [source, json]
@@ -102,7 +111,7 @@ blueprint {
 <1> `streamlets` section: declares instances from the `Streamlets` available in the application (or its dependencies)
 <2> `connections` section: declares how the inlets/outlets of a streamlet should be connected.
 
-It's interesting to note that the declaration of instances in the `streamlets` section lets us use multiple instances of a `Streamlet`, with potentially different configurations, leading to component reuse.
+It is interesting to note that the declaration of instances in the `streamlets` section lets us use multiple instances of a `Streamlet`, with potentially different configurations, leading to component reuse.
 
 With the `blueprint` file in place, we can verify whether our application is properly connected.
 For that, we use the `verifyBlueprint` function, delivered by the `sbt-cloudflow` plugin.
@@ -140,9 +149,9 @@ We can see it in action in the following screencast.
 image::render1576586016282.gif[]
 
 The `Sandbox` provides you with a minimalistic operational version of the complete application.
-You can use it to exercise the functionlity of the application end-to-end and verify that it behaves as expected.
+You can use it to exercise the functionality of the application end-to-end and verify that it behaves as expected.
 
-The `Sandbox` gives you a blazing fast feedback loop for the functionality you are developing, removing the need of having to go through the full package, deploy, and launch on a remote cluster.
+The `Sandbox` gives you a blazing fast feedback loop for the functionality you are developing, removing the need to have to go through the full package, deploy, and launch on a remote cluster.
 
 === Packaging: Build-generated Artifacts
 
@@ -156,7 +165,8 @@ At this stage, we are ready to deploy our application to a Cloudflow-enabled Kub
 In contrast with the usual YAML-full experience that typical K8s deployments require, with Cloudflow we use the `blueprint` information and the `Streamlet` definitions to auto-generate an application deployment. 
 
 Cloudflow also comes with a `kubectl` plugin that augments the capabilities of your local `kubectl` installation to work with Cloudflow applications. 
-You use your usual `kubectl` commands to auth against your target cluster and then, with the `kubectl cloudflow` plugin we can deploy and manage a Cloudflow application as a single logica unit.
+You use your usual `kubectl` commands to auth against your target cluster. 
+Then, with the `kubectl cloudflow` plugin we can deploy and manage a Cloudflow application as a single logical unit.
 
 [source, bash]
 ----
