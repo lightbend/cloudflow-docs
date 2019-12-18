@@ -176,7 +176,7 @@ $ kubectl cloudflow deploy docker-registry/app-image:version
 This method is not only dev-friendly, but also compatible with the typical CI/CD deployments to allow you to take the application from dev to production in a controlled way.
 
 
-= Conclusion
+== Conclusion
 
 As a developer, Cloudflow gives you a set of powerful tools to accelerate the application development process:
 - The Streamlet API, lets you focus on business value and use your knowledge of widely popular streaming runtimes, like Akka Streams, Apache Spark Structured Streaming, and Apache Flink to create full-fledged streaming applications.
