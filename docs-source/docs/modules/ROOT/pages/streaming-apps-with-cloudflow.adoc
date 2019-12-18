@@ -170,7 +170,7 @@ Then, with the `kubectl cloudflow` plugin we can deploy and manage a Cloudflow a
 
 [source, bash]
 ----
-$ kubectl cloudflow deploy image:version 
+$ kubectl cloudflow deploy docker-registry/app-image:version 
 ----
 
 This method is not only dev-friendly, but also compatible with the typical CI/CD deployments to allow you to take the application from dev to production in a controlled way.
