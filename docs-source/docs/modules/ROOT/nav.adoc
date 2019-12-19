@@ -29,4 +29,4 @@
 
 * xref:api:index.adoc[Streamlet API]
 ** link:./scaladoc/cloudflow/streamlets/index.html[Scaladoc]
-** link:./javadoc/[Javadoc]
+** link:./javadoc/index.html[Javadoc]
