@@ -13,7 +13,7 @@ To install a new cluster, clone the https://github.com/lightbend/cloudflow/[repo
 
 NOTE:: This can be done once you have a valid Google account and have access to a project set up for you by the administrator.
 
-* Create a GKE cluster with a specific name `./gke-create-cluster.sh <cluster-name>`
+* Create a GKE cluster with a specific name `./create-cluster-gke.sh <cluster-name>`
 * Install Cloudflow in the designated cluster `./install-gke.sh  <cluster-name>`
 
 This will take you through the process of installing Cloudflow in the cluster. In course of this it will ask a few questions regarding the storage class to be installed. The following should be the response to these:
