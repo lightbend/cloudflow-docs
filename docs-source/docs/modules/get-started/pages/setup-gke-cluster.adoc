@@ -50,10 +50,10 @@ cloudflow-sparkoperator-fdp-sparkoperator-69669fdd54-88brw   0/1     ContainerCr
 strimzi-cluster-operator-7ff64d4b7-c9r2n                     1/1     Running             0          51s
 ```
 
-The complete installtion take a bit of a time and you can follow the progress using `kubectl` command. All operators are installed in the namespace `lightbend`. When everything is installed, you will see the following:
+The complete installtion take a bit of a time and you can follow the progress using `kubectl` command. All operators are installed in the namespace `cloudflow`. When everything is installed, you will see the following:
 
 ```
-$ kubectl get pods -n lightbend
+$ kubectl get pods -n cloudflow
 NAME                                                         READY   STATUS    RESTARTS   AGE
 cloudflow-flink-flink-operator-8588dbd8f4-gsjnm              1/1     Running   0          3m26s
 cloudflow-nfs-fdp-nfs-6f8855d44-vdhhj                        1/1     Running   0          109s
