@@ -382,10 +382,13 @@ The `plainSource` method optionally takes a `ResetPosition` argument. By default
 If `ResetPosition` is set to `Earliest`, `plainSource` will start providing records from the earliest offset known for every partition, potentially re-reading *all received records* on *every* restart.
 ====
 
-`StreamletLogic` also provides a special `Source`, a https://doc.akka.io/api/akka/current/akka/stream/scaladsl/SourceWithContext.html[Scala SourceWithContext] / https://doc.akka.io/japi/akka/current/akka/stream/scaladsl/SourceWithContext.html[Java SourceWithContext], that makes it possible to process records at-least-once. 
-The `sourceWithOffsetContext` method creates a `SourceWithContext`, where every record is automatically associated with a `CommittableOffset`. (the context for every message is a `CommittableOffset`)
+`StreamletLogic` also provides a source type that can pass along context, see https://doc.akka.io/api/akka/current/akka/stream/scaladsl/SourceWithContext.html[Scaladocs SourceWithContext] / https://doc.akka.io/japi/akka/current/akka/stream/scaladsl/SourceWithContext.html[Javadocs SourceWithContext]. It is used to pass along offsets to the end of the stream, where they can be marked as read, after the associated messages have been processed.
 
-The `CommittableOffset` extends `Committable`, which is a token that can be used to indicate that you have read and processed the associated message, and do not want to process it again when the streamlet restarts.
+The `sourceWithOffsetContext` method creates a `SourceWithContext`, where every record is automatically associated with a `CommittableOffset`. 
+
+Anything that can be marked as read in the stream, to prevent re-processing at restart, extends `Committable`. `CommittableOffset` and `CommittableOffsetBatch` are examples of `Committable` objects. 
+
+which is a token that can be used to indicate that you have read and processed the associated message, and do not want to process it again when the streamlet restarts.
 
 Acknowledging the read messages is done by writing the `Committable` to a `committableSink`, which we'll show the details of a little later. 
 
