@@ -30,15 +30,14 @@ On the local development environment, the open-source Cloudflow application deve
 
 On the Kubernetes cluster, the Cloudflow operator takes care of orchestrating the deployment of the different parts of a streaming pipeline as an end-to-end application.
 
-Cloudflow dramatically accelerates your application development efforts, reducing the time required to create, package, and deploy an application from weeks to hours. Lightbend also offers support and enhanced deployment and operational features with a Lightbend Subscription. 
+Cloudflow dramatically accelerates your application development efforts, reducing the time required to create, package, and deploy an application from weeks to hours. Lightbend also offers support and https://developer.lightbend.com/docs/cloudflow/current/index.html[enterprise features] such as enhanced deployment and operational features with a https://www.lightbend.com/lightbend-platform-subscription[Lightbend Subscription]. 
 
-ifdef::todo[TODO: add x-refs to subscription info and to the enterprise doc here.]
 
 == What's next
 
 Choose from the following topics:
 
-* xref:streaming-apps-with-cloudflow.adoc[Understanding streaming applications with Cloudflow]
+* xref:streaming-apps-with-cloudflow.adoc[Cloudflow benefits for streaming applications]
 * xref:get-started:index.adoc[How to get started with an example application]
 * xref:develop:cloudflow-streamlets.adoc[How create Cloudflow applications using streamlets and blueprints].
 

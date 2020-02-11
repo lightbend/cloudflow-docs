@@ -1,8 +1,8 @@
 .Cloudflow Guide
 
 * xref:index.adoc[Introducing Cloudflow]
-* xref:streaming-apps-with-cloudflow.adoc[Understanding Streaming Applications with Cloudflow]
-* xref:concepts.adoc[Core Concepts]
+* xref:streaming-apps-with-cloudflow.adoc[Cloudflow benefits for streaming applications]
+* xref:concepts.adoc[Core streamlets and applications]
 
 * xref:get-started:index.adoc[Get started with Cloudflow]
 ** xref:get-started:prepare-development-environment.adoc[Prepare a development environment]
