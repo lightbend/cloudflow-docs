@@ -7,7 +7,7 @@ This section shows how to create an ingress. An ingress permanently exposes an a
 
 == Creating an ingress
 
-An https://kubernetes.io/docs/concepts/services-networking/ingress/[ingress] is a Kubernetes resource that defines a set of routing rules that and is serviced by an ingress controller. 
+An https://kubernetes.io/docs/concepts/services-networking/ingress/[ingress] is a Kubernetes resource that defines a set of routing rules and is serviced by an ingress controller. 
 
 Before creating an ingress resource, there must be an enabled ingress controller in the cluster. 
 
@@ -50,7 +50,7 @@ spec:
 EOF
 ----
 
-To check the status of the ingress, view the ingress resource, and see if the ingress controller has assigned an address to it:
+View the ingress resource to check the progress of the ingress controller assigning an address to the resource. This may take a few minutes.
 
 [source,bash]
 ----
