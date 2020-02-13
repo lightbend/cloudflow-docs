@@ -24,5 +24,6 @@ This chapter describes how to build, deploy and run a simple "Wind Turbine" Clou
 .. Use CLI helpers such as `status` and `list`
 .. Deal with http ingress and push some data to the application
 .. Undeploy the application
+. xref:ingress-creation.adoc[Creating a permanent ingress]
 
 Let's get started by xref:prepare-development-environment.adoc[preparing the development environment].
