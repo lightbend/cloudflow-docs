@@ -28,7 +28,7 @@ The ingress resource defines routes between the outside of the cluster to an app
 
 In the example below, we create an ingress that exposes the `sensor-data-scala-http-ingress-service` service in the namespace `sensor-data-scala`. 
 
-NOTE: When the Cloudflow operator deploys an application that have one or more streamlets implementing `AkkaServerStreamlet`, the operator will create a Kubernetes service resource for each of these streamlet. The service resource is what we will use below to create a route using an ingress from the outside to the streamlet.
+NOTE: When the Cloudflow operator deploys an application that have one or more streamlets with a server attribute, the operator will create a Kubernetes service resource for each of these streamlet. The service resource is what we will use below to create a route using an ingress from the outside to the streamlet.
 
 The annotation `kubernetes.io/ingress.class` in the ingress resource below is the selector used by the ingress controller. If you installed another ingress controller, review its documentation to learn how it selects ingress resources.
 
