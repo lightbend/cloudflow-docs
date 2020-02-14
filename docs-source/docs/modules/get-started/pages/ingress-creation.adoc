@@ -5,18 +5,21 @@
 
 This section shows how to create an ingress. An ingress permanently exposes an application to the outside of the cluster.
 
-== Creating an ingress
+NOTE: An ingress opens up a permanent, unauthenticated route by default, Kubernetes does not provide any authentication on ingresses. Authentication has to be implemented by the exposed application or the ingress controller.
+
 
 An https://kubernetes.io/docs/concepts/services-networking/ingress/[ingress] is a Kubernetes resource that defines a set of routing rules and is serviced by an ingress controller. 
 
-Before creating an ingress resource, there must be an enabled ingress controller in the cluster. 
-
 There is a wide selection of ingress controllers available. The following link contains a list of the most common ones.
 
-https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/[Ingress Controllers]
+https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/[Ingress Controllers] 
+
+Before creating an ingress resource, there must be an enabled ingress controller in the cluster. 
 
 === Deploying an ingress controller
-The following link shows how to deploy the `Nginx-ingress` ingress controller. This ingress controller is one of the two ingress controllers supported by the Kubernetes project and works on GCP, AWS, and Azure.
+The Kubernetes project currently provides two ingress controllers, `Nginx-ingress` and `gce`. In this example, we will use the `Nginx-ingress` ingress controller since it is compatible with all major cloud vendors (GCP, AWS, and Azure). 
+
+The following link shows how to deploy the `Nginx-ingress` ingress controller.
 
 https://kubernetes.github.io/ingress-nginx/deploy/
 
@@ -25,7 +28,9 @@ The ingress resource defines routes between the outside of the cluster to an app
 
 In the example below, we create an ingress that exposes the `sensor-data-scala-http-ingress-service` service in the namespace `sensor-data-scala`. 
 
-Note here the annotation `kubernetes.io/ingress.class`; this is the selector used by the ingress controller. If you installed another ingress controller, review its documentation to learn how it selects ingress resources.
+NOTE: When the Cloudflow operator deploys an application that have one or more streamlets implementing `AkkaServerStreamlet`, the operator will create a Kubernetes service resource for each of these streamlet. The service resource is what we will use below to create a route using an ingress from the outside to the streamlet.
+
+The annotation `kubernetes.io/ingress.class` in the ingress resource below is the selector used by the ingress controller. If you installed another ingress controller, review its documentation to learn how it selects ingress resources.
 
 When applying the following resource to the cluster, the ingress controller creates a route to the service from the outside. 
 
@@ -60,3 +65,9 @@ sensor-data-http-ingress   *       192.168.1.2       80        59s
 ----
 
 The ingress now has an address, and data can be sent to the ingress on the address `192.168.1.2/sensor-data`
+
+=== Removing an ingress 
+If you want to disable the route to the application created by the ingress, delete the ingress using the following command.
+
+`kubectl delete sensor-data-http-ingress -n sensor-data-scala`
+
