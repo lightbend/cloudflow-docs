@@ -1,12 +1,13 @@
-= Ingress creation
+= Providing External Access to Cloudflow services
 :toc:
 :toc-title: ON THIS PAGE
 :toclevels: 2
 
-This section shows how to create an ingress. An ingress permanently exposes an application to the outside of the cluster.
+In K8s you can allow external (HTTP) network traffic to reach your services by creating Ingresses and adding an Ingress Controller to your cluster.
+
+This section shows how to install a Ingress controller and creating an Ingress.
 
 NOTE: An _Ingress_ opens up a permanent, unauthenticated route by default, Kubernetes does not provide any authentication on ingresses. Authentication has to be implemented by the exposed application or by the ingress controller.
-
 
 An https://kubernetes.io/docs/concepts/services-networking/ingress/[ingress] is a Kubernetes resource that defines a set of routing rules and is serviced by an ingress controller. 
 
