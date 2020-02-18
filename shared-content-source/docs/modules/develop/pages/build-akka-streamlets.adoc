@@ -386,11 +386,9 @@ If `ResetPosition` is set to `Earliest`, `plainSource` will start providing reco
 
 The `sourceWithOffsetContext` method creates a `SourceWithContext`, where every record is automatically associated with a `CommittableOffset`. 
 
-Anything that can be marked as read in the stream, to prevent re-processing at restart, extends `Committable`. `CommittableOffset` and `CommittableOffsetBatch` are examples of `Committable` objects. 
+Anything that can be marked as read in the stream to prevent re-processing at restart, extends `Committable`. `CommittableOffset` and `CommittableOffsetBatch` are examples of `Committable` objects. 
 
-which is a token that can be used to indicate that you have read and processed the associated message, and do not want to process it again when the streamlet restarts.
-
-Acknowledging the read messages is done by writing the `Committable` to a `committableSink`, which we'll show the details of a little later. 
+Marking the messages as read is done by writing the `Committable` to a `committableSink`, which we'll show the details of a little later. 
 
 [NOTE]
 ====
