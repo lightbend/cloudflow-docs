@@ -388,11 +388,11 @@ The `sourceWithOffsetContext` method creates a `SourceWithContext`, where every 
 
 Anything that can be marked as read in the stream to prevent re-processing at restart, extends `Committable`. `CommittableOffset` and `CommittableOffsetBatch` are examples of `Committable` objects. 
 
-Marking the messages as read is done by writing the `Committable` to a `committableSink`, which we'll show the details of a little later. 
+Marking the messages as read is done by writing the `Committable` to a `committableSink`. We'll show the details later.
 
 [NOTE]
 ====
-Many readers will likely think of _commits_ as ensuring database writes to occur in a single transaction. It's important to note that in the context of Akka streamlets, committing messages means something else entirely. It does not refer to ACID transactions, and does not refer to writing or producing records to the pub/sub system. In this case committing means that the streamlet instance indicates that it has read up to a particular message and will not want to process the message again on restart.
+Many readers will likely think of _commits_ as ensuring database writes to occur in a single transaction. It's important to note that in the context of Akka streamlets, committing messages means something else entirely. It does not refer to ACID transactions, and does not refer to writing or producing records to the pub/sub system. Rather, in Akka streamlets, committing means that the streamlet instance indicates that it has read up to a particular message and will not want to process the message again on restart.
 ====
 
 Since you likely want to acknowledge that you have read messages after you have done processing, the most natural way to do this in Akka streams is to have a `Sink` eventually process the `Committable`{empty}s. This does mean that you have to pass along the `Committable`s through your stream.
