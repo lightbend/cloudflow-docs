@@ -5,7 +5,7 @@
 
 This section shows how to create an ingress. An ingress permanently exposes an application to the outside of the cluster.
 
-NOTE: An ingress opens up a permanent, unauthenticated route by default, Kubernetes does not provide any authentication on ingresses. Authentication has to be implemented by the exposed application or the ingress controller.
+NOTE: An _Ingress_ opens up a permanent, unauthenticated route by default, Kubernetes does not provide any authentication on ingresses. Authentication has to be implemented by the exposed application or by the ingress controller.
 
 
 An https://kubernetes.io/docs/concepts/services-networking/ingress/[ingress] is a Kubernetes resource that defines a set of routing rules and is serviced by an ingress controller. 
@@ -70,4 +70,3 @@ The ingress now has an address, and data can be sent to the ingress on the addre
 If you want to disable the route to the application created by the ingress, delete the ingress using the following command.
 
 `kubectl delete sensor-data-http-ingress -n sensor-data-scala`
-
