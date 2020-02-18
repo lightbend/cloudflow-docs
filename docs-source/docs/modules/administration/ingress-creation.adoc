@@ -64,7 +64,7 @@ NAME                       HOSTS   ADDRESS           PORTS     AGE
 sensor-data-http-ingress   *       192.168.1.2       80        59s
 ----
 
-The ingress now has an address, and data can be sent to the ingress on the address `192.168.1.2/sensor-data`
+The ingress now has an address and data can be sent to the ingress on the address `192.168.1.2/sensor-data`
 
 === Removing an ingress 
 If you want to disable the route to the application created by the ingress, delete the ingress using the following command.
