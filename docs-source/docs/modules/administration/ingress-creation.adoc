@@ -17,7 +17,7 @@ https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/[Ing
 Before creating an ingress resource, there must be an enabled ingress controller in the cluster. 
 
 === Deploying an ingress controller
-The Kubernetes project currently provides two ingress controllers, `Nginx-ingress` and `gce`. In this example, we will use the `Nginx-ingress` ingress controller since it is compatible with all major cloud vendors (GCP, AWS, and Azure). 
+The Kubernetes project directly supports and maintains two ingress controllers, `Nginx-ingress` and `gce`. In this example, we will use the `Nginx-ingress` ingress controller since it is compatible with all major cloud vendors (GCP, AWS, and Azure). 
 
 The following link shows how to deploy the `Nginx-ingress` ingress controller.
 
