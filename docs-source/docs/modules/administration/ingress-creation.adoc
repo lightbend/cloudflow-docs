@@ -32,7 +32,7 @@ NOTE: When the Cloudflow operator deploys an application that have one or more s
 
 The annotation `kubernetes.io/ingress.class` in the ingress resource below is the selector used by the ingress controller. If you installed another ingress controller, review its documentation to learn how it selects ingress resources.
 
-When applying the following resource to the cluster, the ingress controller creates a route to the service from the outside. 
+After applying the following resource to the cluster, the ingress controller will create the corresponding route from the outside network to the service. 
 
 [source,bash]
 ----
