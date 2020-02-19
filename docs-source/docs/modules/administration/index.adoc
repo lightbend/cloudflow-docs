@@ -7,4 +7,4 @@ include::ROOT:partial$include.adoc[]
 
 This chapter describes common Cloudflow and Kubernetes administration tasks.
 
-. xref:ingress-creation.adoc[Providing External Access to Cloudflow services]
+. xref:ingress-creation.adoc[Providing External Access to Cloudflow Services]
