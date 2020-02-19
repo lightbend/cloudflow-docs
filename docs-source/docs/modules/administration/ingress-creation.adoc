@@ -1,4 +1,4 @@
-= Providing External Access to Cloudflow services
+= Providing External Access to Cloudflow Services
 :toc:
 :toc-title: ON THIS PAGE
 :toclevels: 2
