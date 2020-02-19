@@ -1,0 +1,90 @@
+
+
+
+== Sending data to the application
+
+To send data to the application, we create a route from the outside of the cluster. 
+
+There are two alternatives for creating this route; one is a localhost port forward, the other is an ingress. In this example, we use an ingress.
+
+The [Kubernetes service]https://kubernetes.io/docs/concepts/services-networking/service/ created by the Cloudflow operator during application deployment, exposes the application inside the cluster. The ingress exposes the application, via the service, to the outside of the cluster. 
+
+A general overview of ingresses and alternatives to ingresses are available xref:ingress-setup.adoc[here].
+
+To create the ingress, run the following script:
+
+[source, bash]
+----
+cat <<EOF | kubectl apply -f - 
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sensor-data-http-ingress
+  namespace: sensor-data-scala
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+    rules:
+    - http:
+        paths:
+        - path: /sensor-data
+          backend:
+            servicePort: 3003
+            serviceName: sensor-data-scala-http-ingress-service
+EOF
+----
+
+The ingress controller updates the ingress resource once an address allocated has been allocated. 
+
+[source, bash]
+----
+> kubectl get ingress -sensor-data-scala
+NAME                       HOSTS   ADDRESS           PORTS     AGE
+sensor-data-http-ingress   *       35.195.246.199    80        59s
+----
+
+We now have an address of the ingress and can continue to send data to the application using the example test data.
+
+In this case, we use the https://httpie.org[Httpie] CLI tool to post data to the application.
+
+[source, bash]
+----
+http POST http://35.195.246.199/sensor-data < test-data/04-moderate-breeze.json
+HTTP/1.1 202 Accepted
+Connection: keep-alive
+Content-Length: 88
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 13 Feb 2020 09:20:38 GMT
+Server: nginx/1.17.7
+
+The request has been accepted for processing, but the processing has not been completed.
+----
+
+As seen above, the request now has been accepted for processing by the streamlet.
+
+
+
+
+
+== Creating a temporary port-forward from localhost
+If you do not want to create permanent access to your application from the internet, you can create a temporary port-forward from localhost. 
+
+Just like ingresses, port forwarding can point towards a service.
+
+[source,bash]
+----
+kubectl -n cloudflow port-forward svc/console-server 5000:80
+---- 
+
+The above command opens up a route between localhost:5000 and the service `console-server`. Now the Lightbend Console UI can be reached on `localhost:5000`.
+
+
+
+
+
+
+
+
+
+
+
