@@ -7,7 +7,7 @@ In K8s you can allow external (HTTP) network traffic to reach your services by c
 
 This section shows how to install an Ingress controller and how to create an Ingress for your services.
 
-NOTE: An _Ingress_ opens up a permanent, unauthenticated route by default, Kubernetes does not provide any authentication on ingresses. Authentication has to be implemented by the exposed application or by the ingress controller.
+NOTE: An _Ingress_ opens up a permanent, unauthenticated route by default. Kubernetes does not provide any authentication on ingresses. Authentication has to be implemented by the exposed service or by the ingress controller.
 
 An https://kubernetes.io/docs/concepts/services-networking/ingress/[ingress] is a Kubernetes resource that defines a set of routing rules and is serviced by an ingress controller. 
 
