@@ -5,7 +5,7 @@
 
 In K8s you can allow external (HTTP) network traffic to reach your services by creating Ingresses and adding an Ingress Controller to your cluster.
 
-This section shows how to install a Ingress controller and creating an Ingress.
+This section shows how to install an Ingress controller and how to create an Ingress for your services.
 
 NOTE: An _Ingress_ opens up a permanent, unauthenticated route by default, Kubernetes does not provide any authentication on ingresses. Authentication has to be implemented by the exposed application or by the ingress controller.
 
