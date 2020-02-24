@@ -176,7 +176,7 @@ In <<checkpoint-dir-example>>, we can see the use of the `checkpointDir` method 
 =======
 [source, scala]
 ---------------
-include::example$spark-sensors/src/main/scala/sensors/SparkConsoleEgress.scala[]
+include::1.3.1@docsnippets:ROOT:example$spark-scala/src/main/scala/cloudflow/sparkdoc/SparkConsoleEgress.scala[tag=docs-checkpointDir-example]
 ---------------
 =======
 
