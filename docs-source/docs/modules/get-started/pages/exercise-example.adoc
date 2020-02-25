@@ -97,7 +97,7 @@ Containers:
 ...
 ```
 
-So one of the Pod ports is `3000` - let's set up a port forwarding on it.
+The streamlet exposes its HTTP endpoint for uploading data on port `3000` - let's set up a port forwarding on it.
 
 * Setup port forwarding for the Pod port
 
