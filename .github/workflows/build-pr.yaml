@@ -1,0 +1,15 @@
+name: Build Docs
+on:
+  # Trigger the workflow on push only for the master branch
+  pull_request:
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Make all  
+      run: |
+        make all
+    
+        
