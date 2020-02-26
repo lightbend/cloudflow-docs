@@ -1,4 +1,4 @@
-name: Build Docs
+name: Build PRs
 on:
   # Trigger the workflow on push only for the master branch
   pull_request:
