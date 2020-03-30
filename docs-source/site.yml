@@ -10,6 +10,12 @@ content:
   - url: ./../
     branches: [HEAD]
     start-path: homepage-source/docs
+  - url: ./../
+    branches: [HEAD]
+    start-path: shared-content-source/docs
+  - url: git@github.com:lightbend/cloudflow
+    branches: [master]
+    start-path: examples/snippets
 
 ui: 
   bundle:
