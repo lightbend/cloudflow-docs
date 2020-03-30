@@ -41,14 +41,14 @@ One way to provide the password via stdin is to pipe it from a file:
 
 [source,bash]
 ----
-  cat key.json | kubectl cloudflow deploy docker.registry.com/my-company/sensor-data-scala:292-c183d80 --username _json_key --password-stdin
+cat key.json | kubectl cloudflow deploy docker.registry.com/my-company/sensor-data-scala:292-c183d80 --username _json_key --password-stdin
 ----
 
 You can also use `--password`, which is less secure:
 
 [source,bash]
 ----
-  kubectl cloudflow deploy docker.registry.com/my-company/sensor-data-scala:292-c183d80 --username _json_key -password "$(cat key.json)"
+kubectl cloudflow deploy docker.registry.com/my-company/sensor-data-scala:292-c183d80 --username _json_key -password "$(cat key.json)"
 ----
 
 If you do not provide a username and password, you will be prompted for them
@@ -61,7 +61,7 @@ You can update the credentials with the "update-docker-credentials" command.
 
 [source,bash]
 ----
-cloudflow deploy [flags]
+kubectl cloudflow deploy [flags]
 ----
 
 == Examples
@@ -84,4 +84,4 @@ kubectl cloudflow deploy registry.test-cluster.io/cloudflow/sensor-data-scala:29
 
 == SEE ALSO
 
-* <<cloudflow.adoc#,cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.
+* <<cloudflow.adoc#,kubectl cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.

@@ -11,16 +11,16 @@ Lists deployed Cloudflow application in the current cluster.
 
 [source,bash]
 ----
-cloudflow list [flags]
+kubectl cloudflow list [flags]
 ----
 
 == Options
 
 [source,bash]
 ----
-  -h, --help   help for list
+-h, --help   help for list
 ----
 
 == SEE ALSO
 
-* <<cloudflow.adoc#,cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.
+* <<cloudflow.adoc#,kubectl cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.

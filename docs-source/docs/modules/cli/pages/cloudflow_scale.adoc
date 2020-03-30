@@ -11,7 +11,7 @@ Scales a streamlet of a deployed Cloudflow application to the specified number o
 
 [source,bash]
 ----
-cloudflow scale [flags]
+kubectl cloudflow scale [flags]
 ----
 
 == Examples
@@ -25,10 +25,10 @@ kubectl cloudflow scale my-app my-streamlet 2
 
 [source,bash]
 ----
-  -h, --help   help for scale
+-h, --help   help for scale
 ----
 
 == SEE ALSO
 
-* <<cloudflow.adoc#,cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.
+* <<cloudflow.adoc#,kubectl cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.
 

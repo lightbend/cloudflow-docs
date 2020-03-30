@@ -11,7 +11,7 @@ Configures a deployed Cloudflow application.
 
 [source,bash]
 ----
-cloudflow configure [flags]
+kubectl cloudflow configure [flags]
 ----
 
 == Examples
@@ -38,4 +38,4 @@ kubectl cloudflow configure my-app
 
 == SEE ALSO
 
-* <<cloudflow.adoc#,cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.
+* <<cloudflow.adoc#,kubectl cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.

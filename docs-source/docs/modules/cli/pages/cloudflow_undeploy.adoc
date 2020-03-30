@@ -11,16 +11,16 @@ An interactive command to undeploy a Cloudflow application. The data managed by 
 
 [source,bash]
 ----
-cloudflow undeploy [flags]
+kubectl cloudflow undeploy [flags]
 ----
 
 == Options
 
 [source,bash]
 ----
-  -h, --help   help for undeploy
+-h, --help   help for undeploy
 ----
 
 == SEE ALSO
 
-* <<cloudflow.adoc#,cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.
+* <<cloudflow.adoc#,kubectl cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.

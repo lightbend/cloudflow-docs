@@ -11,7 +11,7 @@ Gets the status of a Cloudflow application.
 
 [source,bash]
 ----
-cloudflow status [flags]
+kubectl cloudflow status [flags]
 ----
 
 == Examples
@@ -25,9 +25,9 @@ kubectl cloudflow status my-app
 
 [source,bash]
 ----
-  -h, --help   help for status
+-h, --help   help for status
 ----
 
 == SEE ALSO
 
-* <<cloudflow.adoc#,cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.
+* <<cloudflow.adoc#,kubectl cloudflow>> - Create, manage, deploy, and operate Cloudflow applications.
