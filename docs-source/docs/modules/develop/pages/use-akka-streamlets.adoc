@@ -68,7 +68,7 @@ When you build your own Akka streamlet, you define both a `StreamletShape` and a
 
 In general terms, when you publish and deploy a Cloudflow application, each streamlet definition becomes a physical deployment as one or more Kubernetes artifacts.
 In the case of Akka-based streamlets, each streamlet is submitted as a https://kubernetes.io/docs/concepts/workloads/controllers/deployment/[Deployment, window="k8s_deployment"] resource.
-Upon deployment, it becomes a set of running _pods_ depending in the scale factor for that streamlet.
+Upon deployment, it becomes a set of running _pods_ depending on the scale factor for that streamlet.
 
 A so-called runner runs inside every pod. The runner connects the streamlet to data streams, at which point the streamlet starts consuming from inlets. The Streamlet advances through the data streams that are provided on inlets and writes data to outlets.
 
