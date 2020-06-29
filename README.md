@@ -1,6 +1,6 @@
 # Cloudflow Documentation
 
-This repository contains the sources for the [Cloudflow web site](https://cloudflow.io/) and the [Cloudflow documentation](https://cloudflow.io/docs)
+This repository contains the sources for the [Cloudflow web site](https://cloudflow.io/) and the [Cloudflow documentation](https://cloudflow.io/docs/current/index.html)
 
 This repository is structured as follows:
 - The root directory contains the `makefile` for the documentation generation process.
